@@ -1,0 +1,49 @@
+﻿<Window x:Class="FileAggregator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="File Aggregator" Height="509" Width="606" ResizeMode="CanResizeWithGrip">
+    <StackPanel Margin="10" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+        <!-- Исходный путь -->
+        <StackPanel Orientation="Horizontal" Margin="0,5">
+            <TextBlock Text="Исходный путь:" VerticalAlignment="Center" Width="100" />
+            <TextBox x:Name="SourcePathTextBox" HorizontalAlignment="Stretch" Margin="5,0" MinWidth="150"/>
+            <Button Content="..." Width="30" HorizontalAlignment="Right" Click="OnSelectSourcePathClick" />
+        </StackPanel>
+
+        <!-- Выходной путь -->
+        <StackPanel Orientation="Horizontal" Margin="0,5">
+            <TextBlock Text="Выходной путь:" VerticalAlignment="Center" Width="100" />
+            <TextBox x:Name="OutputFileTextBox" HorizontalAlignment="Stretch" Margin="5,0" MinWidth="150"/>
+            <Button Content="..." Width="30" HorizontalAlignment="Right" Click="OnSelectOutputFileClick" />
+        </StackPanel>
+
+        <!-- Список расширений -->
+        <StackPanel Orientation="Vertical" Margin="0,10">
+            <TextBlock Text="Расширения:" Margin="0,5" />
+
+            <!-- Оборачиваем список расширений в ScrollViewer -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,5" Height="120">
+                <StackPanel x:Name="ExtensionsPanel" Orientation="Vertical" HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBox Width="250" HorizontalAlignment="Left" Text=".cs" />
+                        <Button Content="Удалить" Margin="5,0" HorizontalAlignment="Right" Click="OnRemoveExtensionClick" />
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+            <Button Content="Добавить расширение" Width="150" Margin="0,5" HorizontalAlignment="Left" Click="OnAddExtensionClick" />
+        </StackPanel>
+
+        <!-- Опция выбора двух колонок -->
+        <StackPanel Orientation="Horizontal" Margin="0,5">
+            <CheckBox x:Name="TwoColumnsCheckBox" Content="В две колонки" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <!-- Кнопка выполнения -->
+        <Button Content="Выполнить" Width="100" HorizontalAlignment="Right" Margin="0,10" Click="OnExecuteButtonClick" />
+
+        <!-- Лог -->
+        <TextBox x:Name="LogTextBox" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+                 Height="150" Margin="0,10" HorizontalAlignment="Stretch"/>
+    </StackPanel>
+</Window>
